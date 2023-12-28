@@ -12,6 +12,7 @@ header {
     background: #ffffff;
     justify-content: space-between;
     z-index: 99;
+    transition: all .3s;
 }
 
 header .header-menu__container {
