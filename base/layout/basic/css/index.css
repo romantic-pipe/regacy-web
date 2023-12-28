@@ -55,6 +55,9 @@ header .header-user__container {
     gap: 28px;
 }
 
+main {
+    background: #000000;
+}
 .landing__container {
     position: relative;
     display: flex;
