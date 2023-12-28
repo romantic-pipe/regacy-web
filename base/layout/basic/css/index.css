@@ -11,6 +11,7 @@ header {
     padding: 24px 27px;
     background: #ffffff;
     justify-content: space-between;
+    z-index: 99;
 }
 
 header .header-menu__container {
