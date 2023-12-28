@@ -59,14 +59,16 @@ main {
 }
 
 .landing__container {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
 .landing__container .landing__item {
-    position: relative;
+    position: sticky;
     display: flex;
+    bottom: 0;
     flex-direction: column;
     justify-content: center;
     align-items: center;
