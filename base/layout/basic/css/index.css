@@ -77,6 +77,8 @@ header .header-user__container {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    outline: none;
+    border: none;
 }
 
 .landing__container .landing__item .landing__item-text__container {
