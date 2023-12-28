@@ -3,7 +3,7 @@ body {
 }
 
 header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     display: flex;
@@ -53,10 +53,6 @@ header .header-user__container {
     justify-content: space-between;
     align-items: center;
     gap: 28px;
-}
-
-main {
-    padding-top: 74px;
 }
 
 .landing__container {
