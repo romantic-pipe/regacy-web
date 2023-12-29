@@ -14,13 +14,14 @@ const BaseModule = {
         let lastScrollTop = 0
         let direction = 'down'
         
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', 
+        throttle(function() {
             let scrollTop = window.scrollY
             direction = scrollTop > lastScrollTop ? 'down' : 'up'
             
             headerElement.style.transform = (scrollTop > togglePoint) && direction === 'down' ? `translateY(-${headerHeight}px)` : "translateY(0px)"
             
             lastScrollTop = scrollTop
-        })
+        }, 300), { passive: true })
     },
 }

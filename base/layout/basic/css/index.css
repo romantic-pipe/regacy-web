@@ -1,5 +1,6 @@
 body {
     overflow-y: auto;
+    background-color: #000000;
 }
 
 header {
@@ -75,6 +76,11 @@ main {
     align-items: center;
     width: 100%;
     height: calc(100vh - 74px);
+    opacity: 0;
+    }
+    
+    .landing__container .landing__item:first-child {
+        opacity: 1;
 }
 
 .landing__container .landing__item .landing__item__video {
