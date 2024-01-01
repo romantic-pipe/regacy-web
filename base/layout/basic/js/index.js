@@ -9,7 +9,7 @@ const BaseModule = {
     controlHeaderActivation: function() {
         const headerElement = document.querySelector('header')
         const headerHeight = headerElement.getBoundingClientRect().height
-        const togglePoint = window.innerHeight * 0.5
+        const togglePoint = window.innerHeight * 0.2
         
         let lastScrollTop = 0
         let direction = 'down'
@@ -22,6 +22,6 @@ const BaseModule = {
             headerElement.style.transform = (scrollTop > togglePoint) && direction === 'down' ? `translateY(-${headerHeight}px)` : "translateY(0px)"
             
             lastScrollTop = scrollTop
-        }, 300), { passive: true })
+        }, 100), { passive: true })
     },
 }
