@@ -28,6 +28,7 @@ const Main = {
     initSwiper: function() {
         this.initSlide()
         this.initScroll()
+        this.toggleSlideVideo()
     },
     initSlide: function() {
         const slideElementArr = document.querySelectorAll('.landing__item')
@@ -36,9 +37,11 @@ const Main = {
         if (slideElementArr && slideLength > 0) {
             slideElementArr.forEach((element, index) => {
                 element.style.zIndex = slideLength - index + 2
+                if (index !== 0) {
+                    element.querySelector('video').pause()
+                }
 
                 if (index === 1) {
-                    element.style.opacity = 1
                     element.style.filter = `blur(${this.initialValue.blurMaxPoint}px)`
                 }
             })
@@ -48,20 +51,57 @@ const Main = {
         const slideElementArr = document.querySelectorAll('.landing__item')    
         const blurMaxPoint = 10
 
+        let lastIndex = 0
         let lastScrollTop = 0
         
         window.addEventListener('scroll', throttle(function(event) {
             const direction = window.scrollY - lastScrollTop > 0 ? 'down' : 'up'
-            const currentIndex = parseInt((window.scrollY + window.innerHeight * 0.7) / (window.innerHeight), 10)
+            const currentIndex = parseInt((window.scrollY + window.innerHeight * 0.6) / (window.innerHeight), 10)
 
-            if (direction === 'down') {
-                slideElementArr[currentIndex - 1]?.querySelector('video').pause()
-            } else {
-                slideElementArr[currentIndex + 1]?.querySelector('video').pause()
-            }
-            slideElementArr[currentIndex]?.querySelector('video').play()
+            const currentSlide = slideElementArr[currentIndex]
+            // const nextSlide = direction === 'up' ? slideElementArr[currentIndex > 0 ? currentIndex - 1 : 0] : slideElementArr[currentIndex + 1 < slideElementArr.length ? currentIndex + 1 : slideElementArr.length - 1]
             
+            // console.log(currentIndex)
+            // console.log(currentSlide)
+            // console.log(blurMaxPoint / currentSlide.getBoundingClientRect().y)
+            // nextSlide.style.filter = `blur(${blurMaxPoint / currentSlide.getBoundingClientRect().y * -0.1}px)`
+            
+            console.log(currentIndex)
+            console.log(direction)
+
+            // Control Blur Filter Of Slide
+            if (direction === 'down') {
+                // 다다음 슬라이드의 opacity 미리 조절
+                
+            } else {
+                if (currentIndex === 0) 
+                    return
+
+                slideElementArr[currentIndex].style.filter = `blur(${blurMaxPoint}px)`
+
+                if (currentIndex < slideElementArr.length - 1) {
+                    slideElementArr[currentIndex + 1].style.opacity = 0
+                }
+            }
+ 
+            lastIndex = currentIndex
             lastScrollTop = window.scrollY
-        }, 300), { passive: true })
-    }
+        }, 100), { passive: true })
+    },
+    toggleSlideVideo: function() {
+        const slideElementArr = document.querySelectorAll('.landing__item') 
+        
+        let lastIndex = 0
+        window.addEventListener('scroll', throttle(function(event) {
+            const currentIndex = parseInt((window.scrollY + window.innerHeight * 0.5) / (window.innerHeight), 10)
+            const currentSlide = slideElementArr[currentIndex]
+            
+            if (currentIndex !== lastIndex) {
+                slideElementArr[lastIndex]?.querySelector('video').pause()
+                currentSlide?.querySelector('video').play()
+            }
+            
+            lastIndex = currentIndex
+        }, 100), { passive: true })
+    },
 }
