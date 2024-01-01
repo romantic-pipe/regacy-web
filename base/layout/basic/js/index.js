@@ -4,7 +4,16 @@ window.addEventListener("load", function() {
 
 const BaseModule = {
     init: function() {
+        this.scrollToTop()
         this.controlHeaderActivation()
+    },
+    scrollToTop: function() {
+        const headerElement = document.querySelector('header')
+        setTimeout(() => {
+            headerElement.style.transform = 'translateY(0px)'
+        }, 0)
+        
+        window.scrollTo(0, 0)
     },
     controlHeaderActivation: function() {
         const headerElement = document.querySelector('header')
