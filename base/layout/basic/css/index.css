@@ -77,10 +77,11 @@ main {
     width: 100%;
     height: calc(100vh - 74px);
     opacity: 0;
-    }
-    
-    .landing__container .landing__item:first-child {
-        opacity: 1;
+}
+
+.landing__container .landing__item:first-child,
+.landing__container .landing__item:nth-child(2) {
+    opacity: 1;
 }
 
 .landing__container .landing__item .landing__item__video {
