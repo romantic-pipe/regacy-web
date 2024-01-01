@@ -52,7 +52,7 @@ const Main = {
         
         window.addEventListener('scroll', throttle(function(event) {
             const direction = window.scrollY - lastScrollTop > 0 ? 'down' : 'up'
-            const currentIndex = parseInt((window.scrollY + window.innerHeight / 2) / (window.innerHeight), 10)
+            const currentIndex = parseInt((window.scrollY + window.innerHeight * 0.7) / (window.innerHeight), 10)
 
             if (direction === 'down') {
                 slideElementArr[currentIndex - 1]?.querySelector('video').pause()
