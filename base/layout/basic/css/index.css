@@ -79,8 +79,7 @@ main {
     opacity: 0;
 }
 
-.landing__container .landing__item:first-child,
-.landing__container .landing__item:nth-child(2) {
+.landing__container .landing__item:first-child {
     opacity: 1;
 }
 

@@ -49,43 +49,18 @@ const Main = {
     },
     initScroll: function() {        
         const slideElementArr = document.querySelectorAll('.landing__item')    
-        const blurMaxPoint = 10
-
-        let lastIndex = 0
-        let lastScrollTop = 0
         
         window.addEventListener('scroll', throttle(function(event) {
-            const direction = window.scrollY - lastScrollTop > 0 ? 'down' : 'up'
-            const currentIndex = parseInt((window.scrollY + window.innerHeight * 0.6) / (window.innerHeight), 10)
-
+            const currentIndex = parseInt(window.scrollY / window.innerHeight, 10)
             const currentSlide = slideElementArr[currentIndex]
-            // const nextSlide = direction === 'up' ? slideElementArr[currentIndex > 0 ? currentIndex - 1 : 0] : slideElementArr[currentIndex + 1 < slideElementArr.length ? currentIndex + 1 : slideElementArr.length - 1]
-            
-            // console.log(currentIndex)
-            // console.log(currentSlide)
-            // console.log(blurMaxPoint / currentSlide.getBoundingClientRect().y)
-            // nextSlide.style.filter = `blur(${blurMaxPoint / currentSlide.getBoundingClientRect().y * -0.1}px)`
-            
-            console.log(currentIndex)
-            console.log(direction)
+            const currentSlideY = currentSlide.getBoundingClientRect().bottom
 
             // Control Blur Filter Of Slide
-            if (direction === 'down') {
-                // 다다음 슬라이드의 opacity 미리 조절
-                
-            } else {
-                if (currentIndex === 0) 
-                    return
+            if (currentIndex === slideElementArr.length - 1) return
 
-                slideElementArr[currentIndex].style.filter = `blur(${blurMaxPoint}px)`
-
-                if (currentIndex < slideElementArr.length - 1) {
-                    slideElementArr[currentIndex + 1].style.opacity = 0
-                }
-            }
- 
-            lastIndex = currentIndex
-            lastScrollTop = window.scrollY
+            const nextSlide = slideElementArr[currentIndex + 1]
+            nextSlide.style.filter = `blur(${window.innerHeight / (window.innerHeight - currentSlideY) - 1}px)`
+            nextSlide.style.opacity = (window.innerHeight - currentSlideY) / window.innerHeight
         }, 100), { passive: true })
     },
     toggleSlideVideo: function() {
