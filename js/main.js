@@ -28,7 +28,9 @@ const Main = {
     initSwiper: function() {
         this.initSlide()
         this.initScroll()
+        this.initIndicator()
         this.toggleSlideVideo()
+        this.controlIndicator()
     },
     initSlide: function() {
         const slideElementArr = document.querySelectorAll('.landing__item')
@@ -45,6 +47,23 @@ const Main = {
                     element.style.filter = `blur(${this.initialValue.blurMaxPoint}px)`
                 }
             })
+        }
+    },
+    initIndicator: function() {
+        const landingIndicatorEl = document.querySelector('.landing__indicator')
+        const slideElementArr = document.querySelectorAll('.landing__item')
+        const slideLength = slideElementArr.length
+        
+        for (let i = 0; i < slideLength; i++) {
+            const dotEl = document.createElement('div')
+            
+            dotEl.dataset.index = i
+            dotEl.classList.add('dot')
+            if (i === 0) {
+                dotEl.classList.add('active')
+            }
+
+            landingIndicatorEl.appendChild(dotEl)
         }
     },
     initScroll: function() {        
@@ -79,4 +98,18 @@ const Main = {
             lastIndex = currentIndex
         }, 100), { passive: true })
     },
+    controlIndicator: function() {
+        const indicatorDotArr = document.querySelectorAll('.landing__indicator .dot')
+        
+        let lastIndex = 0
+        window.addEventListener('scroll', throttle(function(event) {
+            const currentIndex = parseInt((window.scrollY + window.innerHeight * 0.5) / (window.innerHeight), 10)
+            if (lastIndex !== currentIndex) {
+                indicatorDotArr[lastIndex].classList.remove('active')
+                indicatorDotArr[currentIndex].classList.add('active')
+            }   
+            
+            lastIndex = currentIndex
+        }, 100), { passive: true })
+    }
 }
