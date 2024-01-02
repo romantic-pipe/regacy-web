@@ -126,6 +126,66 @@ main {
     border: 1px solid #ffffff;
 }
 
+.landing-brand__container {
+    display: flex;
+    position: relative;
+}
+
+.landing-brand__container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    outline: none;
+    border: none;
+}
+
+.landing-brand__container .landing-brand__text__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    gap: 50px;
+}
+
+.landing-brand__container .landing-brand__text__container .title__container {
+    line-height: 1.2;
+}
+
+.landing-brand__container .landing-brand__text__container .title__container .title {
+    font-size: 75px;
+}
+
+.landing-brand__container .landing-brand__text__container .title__container .sub-title {
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.landing-brand__container .landing-brand__text__container .content__container {
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.landing-brand__container .landing-brand__text__container .link__container {
+    position: relative;
+}
+
+.landing-brand__container .landing-brand__text__container .link__container a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #ffffff;
+}
 .landing__indicator {
     position: fixed;
     bottom: 50%;
