@@ -56,12 +56,15 @@
 }
 
 .landing__container .landing__item .landing__item-text__container button {
-    margin-top: 60px;
-    padding: 16px 30px;
     font-size: 18px;
+    font-family: Montserrat;
     color: #ffffff;
-    background-color: #b4b4b4;
-    border: 1px solid #ffffff;
+    font-weight: 300;
+        margin-top: 40px;
+        padding: 10px 42px;
+        background-color: rgba(0, 0, 0, .1);
+        backdrop-filter: blur(10px);
+        border: .5px solid #ffffff;
 }
 
 .landing-brand__container {
@@ -98,9 +101,11 @@
 
 .landing-brand__container .landing-brand__text__container .title__container .title {
     font-size: 75px;
+    font-weight: 400;
 }
 
 .landing-brand__container .landing-brand__text__container .title__container .sub-title {
+    font-family: Montserrat;
     font-size: 20px;
     font-style: italic;
     font-weight: 300;
@@ -115,6 +120,11 @@
     position: relative;
 }
 
+.landing-brand__container .landing-brand__text__container .link__container a {
+    font-family: Montserrat;
+    font-weight: 300;
+    font-size: 16px;
+}
 .landing-brand__container .landing-brand__text__container .link__container a::after {
     content: '';
     position: absolute;
