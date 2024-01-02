@@ -128,9 +128,9 @@ main {
 
 .landing__indicator {
     position: fixed;
-    top: 50%;
+    bottom: 50%;
     right: 36px;
-    transform: translate(0, -50%);
+    transform: translate(0, 50%);
     display: inline-flex;
     flex-direction: column;
     width: 3px;

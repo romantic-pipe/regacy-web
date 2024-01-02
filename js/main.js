@@ -30,7 +30,8 @@ const Main = {
         this.initScroll()
         this.initIndicator()
         this.toggleSlideVideo()
-        this.controlIndicator()
+        this.controlIndicatorEffect()
+        this.controlIndicatorPosition()
     },
     initSlide: function() {
         const slideElementArr = document.querySelectorAll('.landing__item')
@@ -66,11 +67,12 @@ const Main = {
             landingIndicatorEl.appendChild(dotEl)
         }
     },
-    initScroll: function() {        
+    initScroll: function() { 
+        const headerHeight = document.querySelector('header').getBoundingClientRect().height
         const slideElementArr = document.querySelectorAll('.landing__item')    
         
         window.addEventListener('scroll', throttle(function(event) {
-            const currentIndex = parseInt(window.scrollY / window.innerHeight, 10)
+            const currentIndex = parseInt((window.scrollY + headerHeight) / window.innerHeight, 10)
             const currentSlide = slideElementArr[currentIndex]
             const currentSlideY = currentSlide.getBoundingClientRect().bottom
 
@@ -98,18 +100,34 @@ const Main = {
             lastIndex = currentIndex
         }, 100), { passive: true })
     },
-    controlIndicator: function() {
+    controlIndicatorEffect: function() {
+        const headerHeight = document.querySelector('header').getBoundingClientRect().height
         const indicatorDotArr = document.querySelectorAll('.landing__indicator .dot')
         
         let lastIndex = 0
         window.addEventListener('scroll', throttle(function(event) {
-            const currentIndex = parseInt((window.scrollY + window.innerHeight * 0.5) / (window.innerHeight), 10)
+            const currentIndex = parseInt((window.scrollY + headerHeight) / window.innerHeight, 10)
+            console.log(currentIndex)
             if (lastIndex !== currentIndex) {
                 indicatorDotArr[lastIndex].classList.remove('active')
                 indicatorDotArr[currentIndex].classList.add('active')
-            }   
+            }
             
             lastIndex = currentIndex
+        }, 100), { passive: true })
+    },
+    controlIndicatorPosition: function() {
+        const landingContainerEl = document.querySelector('.landing__container')
+        const slideElementArr = landingContainerEl.querySelectorAll('.landing__item')
+        const indicatorEl = document.querySelector('.landing__indicator')
+
+        const point = landingContainerEl.getBoundingClientRect().height * ((slideElementArr.length - 1) / slideElementArr.length)
+        console.log(point)
+
+        window.addEventListener('scroll', throttle(function(event) {
+            const endOfLandingContainer = window.scrollY > point
+            indicatorEl.style.position = endOfLandingContainer ? 'absolute' : 'fixed'
+            indicatorEl.style.bottom = endOfLandingContainer ? `${window.innerHeight / 2}px` : '50%'
         }, 100), { passive: true })
     }
 }
