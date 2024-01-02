@@ -27,7 +27,7 @@ const Main = {
     },
     initSwiper: function() {
         this.initSlide()
-        this.initScroll()
+        this.initSlideScrollEffect()
         this.initIndicator()
         this.toggleSlideVideo()
         this.controlIndicatorEffect()
@@ -67,7 +67,7 @@ const Main = {
             landingIndicatorEl.appendChild(dotEl)
         }
     },
-    initScroll: function() { 
+    initSlideScrollEffect: function() { 
         const headerHeight = document.querySelector('header').getBoundingClientRect().height
         const slideElementArr = document.querySelectorAll('.landing__item')    
         
