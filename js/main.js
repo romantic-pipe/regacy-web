@@ -120,6 +120,7 @@ const Main = {
         const landingContainerEl = document.querySelector('.landing__container')
         const slideElementArr = landingContainerEl.querySelectorAll('.landing__item')
         const indicatorEl = document.querySelector('.landing__indicator')
+        const mediaControllerEl = document.querySelector('.landing__media-controller')
         const headerHeight = document.querySelector('header').getBoundingClientRect().height
 
         const point = (headerHeight + landingContainerEl.getBoundingClientRect().height) * ((slideElementArr.length - 1) / slideElementArr.length) + 20
@@ -127,8 +128,11 @@ const Main = {
 
         window.addEventListener('scroll', throttle(function(event) {
             const endOfLandingContainer = window.scrollY > point
+            
             indicatorEl.style.position = endOfLandingContainer ? 'absolute' : 'fixed'
             indicatorEl.style.bottom = endOfLandingContainer ? `${window.innerHeight / 2}px` : '50%'
+
+            mediaControllerEl.style.position = endOfLandingContainer ? 'absolute' : 'fixed'
         }, 100), { passive: true })
     }
 }

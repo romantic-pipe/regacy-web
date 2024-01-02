@@ -157,3 +157,12 @@
 .landing__indicator .dot.active {
     height: 55px;
 }
+.landing__media-controller {
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 50;
+}
