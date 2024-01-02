@@ -120,8 +120,9 @@ const Main = {
         const landingContainerEl = document.querySelector('.landing__container')
         const slideElementArr = landingContainerEl.querySelectorAll('.landing__item')
         const indicatorEl = document.querySelector('.landing__indicator')
+        const headerHeight = document.querySelector('header').getBoundingClientRect().height
 
-        const point = landingContainerEl.getBoundingClientRect().height * ((slideElementArr.length - 1) / slideElementArr.length)
+        const point = (headerHeight + landingContainerEl.getBoundingClientRect().height) * ((slideElementArr.length - 1) / slideElementArr.length) + 20
         console.log(point)
 
         window.addEventListener('scroll', throttle(function(event) {

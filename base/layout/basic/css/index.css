@@ -77,7 +77,7 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: calc(100vh - 74px);
+    height: 100vh;
     opacity: 0;
 }
 
@@ -134,20 +134,20 @@ main {
     display: inline-flex;
     flex-direction: column;
     width: 3px;
-    gap: 22px;
+    gap: 15px;
     z-index: 50;
 }
 
 .landing__indicator .dot {
     display: inline-block;
     width: 100%;
-    height: 35px;
+    height: 25px;
     background: #ffffff;
     transition: all .3s;
 }
 
 .landing__indicator .dot.active {
-    height: 110px;
+    height: 55px;
 }
 footer {
     padding: 50px 30px;
