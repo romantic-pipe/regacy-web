@@ -27,6 +27,7 @@ const Main = {
     },
     initSwiper: function() {
         this.initSlide()
+        this.initMediaControlButton()
         this.initSlideScrollEffect()
         this.initIndicator()
         this.toggleSlideVideo()
@@ -49,6 +50,23 @@ const Main = {
                 }
             })
         }
+    },
+    initMediaControlButton: function() {
+        const videoElementArr = document.querySelectorAll('main video')
+        const speakerOnButton = document.querySelector('.speaker-on__button')
+        const speakerOffButton = document.querySelector('.speaker-off__button')
+
+        speakerOnButton.addEventListener('click', () => {
+            videoElementArr.forEach((video) => {
+                video.muted = false
+            })
+        })
+        
+        speakerOffButton.addEventListener('click', () => {
+            videoElementArr.forEach((video) => {
+                video.muted = true
+            })
+        })
     },
     initIndicator: function() {
         const landingIndicatorEl = document.querySelector('.landing__indicator')
@@ -107,7 +125,6 @@ const Main = {
         let lastIndex = 0
         window.addEventListener('scroll', throttle(function(event) {
             const currentIndex = parseInt((window.scrollY + headerHeight) / window.innerHeight, 10)
-            console.log(currentIndex)
             if (lastIndex !== currentIndex) {
                 indicatorDotArr[lastIndex].classList.remove('active')
                 indicatorDotArr[currentIndex].classList.add('active')
@@ -124,11 +141,10 @@ const Main = {
         const headerHeight = document.querySelector('header').getBoundingClientRect().height
 
         const point = (headerHeight + landingContainerEl.getBoundingClientRect().height) * ((slideElementArr.length - 1) / slideElementArr.length) + 20
-        console.log(point)
 
         window.addEventListener('scroll', throttle(function(event) {
             const endOfLandingContainer = window.scrollY > point
-            
+
             indicatorEl.style.position = endOfLandingContainer ? 'absolute' : 'fixed'
             indicatorEl.style.bottom = endOfLandingContainer ? `${window.innerHeight / 2}px` : '50%'
 
