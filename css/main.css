@@ -1,3 +1,28 @@
+@keyframes slidein {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    0% {
+        transform: translateY(-100%);
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
 .landing__container {
     position: relative;
     display: flex;
@@ -67,6 +92,18 @@
         border: .5px solid #ffffff;
 }
 
+.landing__container .landing__item .landing__item__arrow {
+    position: absolute;
+    bottom: 160px;
+    left: 50%;
+    width: 30px;
+    transform: translate(-50%, 0);
+    animation: slidein 2s infinite;
+}
+
+.landing__container .landing__item .landing__item__arrow img {
+    width: 100%;
+}
 .landing-brand__container {
     display: flex;
     position: relative;

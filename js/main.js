@@ -17,7 +17,7 @@ function handleLoadedData() {
 const Main = {
     initialValue: {
         blurMinPoint: 0,
-        blurMaxPoint: 10,  
+        blurMaxPoint: 10,
     },
     init: function() {
         this.initSwiper()
@@ -41,7 +41,17 @@ const Main = {
         if (slideElementArr && slideLength > 0) {
             slideElementArr.forEach((element, index) => {
                 element.style.zIndex = slideLength - index + 2
-                if (index !== 0) {
+                if (index === 0) {
+                    const arrow = document.createElement('div')
+                    arrow.classList.add('landing__item__arrow')
+
+                    const arrowImg = document.createElement('img')
+                    arrowImg.src = 'images/icon-arrow.svg'
+                    arrowImg.alt = 'Scroll Down'
+                    
+                    arrow.appendChild(arrowImg)
+                    element.appendChild(arrow)
+                } else {
                     element.querySelector('video').pause()
                 }
 
