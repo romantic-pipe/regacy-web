@@ -82,6 +82,10 @@ footer {
     font-weight: 600;
 }
 
+.footer-menu__container ul li a {
+    font-family: Montserrat;
+    font-weight: 600;
+}
 .footer-menu__container ul li.active {
     position: relative;
     color: #ffffff;
@@ -112,6 +116,14 @@ footer {
     gap: 36px;
 }
 
+.footer-info__container .company {
+    font-family: Montserrat;
+    font-weight: 600;
+}
+
+.footer-info__container ul li {
+    font-size: 15px;
+}
 .footer-info__container ul .privacy {
     color: #ffffff;
     font-weight: 600;
@@ -122,6 +134,15 @@ footer {
     margin-bottom: 18px;
 }
 
+.footer-company__container .company-info div {
+    font-family: Pretendard;
+    font-weight: 600;
+}
+
+.footer-company__container .contact .highlight {
+    color: #ffffff;
+    text-decoration: underline;
+}
 .footer-logo__container {
     display: flex;
     justify-content: center;
