@@ -103,6 +103,10 @@ const Main = {
         let lastIndex = 0
         window.addEventListener('scroll', throttle(function(event) {
             const currentIndex = parseInt((window.scrollY + headerHeight) / window.innerHeight, 10)
+            
+            // landing container를 넘어선 이후에 대한 예외 처리
+            if (currentIndex > slideElementArr.length - 1) return
+
             const currentSlide = slideElementArr[currentIndex]
             const currentSlideY = currentSlide.getBoundingClientRect().bottom
 
@@ -145,9 +149,15 @@ const Main = {
         let lastIndex = 0
         window.addEventListener('scroll', throttle(function(event) {
             const currentIndex = parseInt((window.scrollY + headerHeight) / window.innerHeight, 10)
+            const slideLength = indicatorDotArr.length
+
+            // Landing Slide 바깥으로 스크롤이 넘어갔을 때 lastIndex를 마지막 슬라이드로 유지
+            if (currentIndex > slideLength - 1) 
+                lastIndex = slideLength - 1
+
             if (lastIndex !== currentIndex) {
-                indicatorDotArr[lastIndex].classList.remove('active')
-                indicatorDotArr[currentIndex].classList.add('active')
+                !!indicatorDotArr[lastIndex] && indicatorDotArr[lastIndex].classList.remove('active')
+                !!indicatorDotArr[currentIndex] && indicatorDotArr[currentIndex].classList.add('active')
             }
             
             lastIndex = currentIndex
