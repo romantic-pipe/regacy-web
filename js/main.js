@@ -110,7 +110,7 @@ const Main = {
                 currentSlide.style.filter = `blur(0px)`
                 currentSlide.style.opacity = 1
             }
-            
+
             lastIndex = currentIndex
 
             // Control Blur Filter Of Slide
@@ -157,6 +157,7 @@ const Main = {
         const slideElementArr = landingContainerEl.querySelectorAll('.landing__item')
         const indicatorEl = document.querySelector('.landing__indicator')
         const mediaControllerEl = document.querySelector('.landing__media-controller')
+        const brandContainerEl = document.querySelector('.landing-brand__container')
         const headerHeight = document.querySelector('header').getBoundingClientRect().height
 
         const point = (headerHeight + landingContainerEl.getBoundingClientRect().height) * ((slideElementArr.length - 1) / slideElementArr.length) + 20
@@ -168,6 +169,7 @@ const Main = {
             indicatorEl.style.bottom = endOfLandingContainer ? `${window.innerHeight / 2}px` : '50%'
 
             mediaControllerEl.style.position = endOfLandingContainer ? 'absolute' : 'fixed'
+            brandContainerEl.style.opacity = endOfLandingContainer ? 1 : 0
         }, 100), { passive: true })
     }
 }
