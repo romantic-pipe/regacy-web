@@ -99,10 +99,19 @@ const Main = {
         const headerHeight = document.querySelector('header').getBoundingClientRect().height
         const slideElementArr = document.querySelectorAll('.landing__item')    
         
+        let lastIndex = 0
         window.addEventListener('scroll', throttle(function(event) {
             const currentIndex = parseInt((window.scrollY + headerHeight) / window.innerHeight, 10)
             const currentSlide = slideElementArr[currentIndex]
             const currentSlideY = currentSlide.getBoundingClientRect().bottom
+
+            // 명시적으로 다음 슬라이드로 이동했을 시 blur와 opacity 초기화
+            if (lastIndex !== currentIndex) {
+                currentSlide.style.filter = `blur(0px)`
+                currentSlide.style.opacity = 1
+            }
+            
+            lastIndex = currentIndex
 
             // Control Blur Filter Of Slide
             if (currentIndex === slideElementArr.length - 1) return
