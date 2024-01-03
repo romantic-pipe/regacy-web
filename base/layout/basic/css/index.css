@@ -10,7 +10,7 @@ header {
     left: 0;
     display: flex;
     width: 100%;
-    padding: 24px 27px;
+    padding: 24px 55px 24px 27px;
     background: #ffffff;
     justify-content: space-between;
     z-index: 99;
@@ -47,7 +47,6 @@ header .header-menu__container .header-menu__item:hover::after {
 
 header .header-menu__container .header-menu__item.active {
     font-weight: 700;
-
 }
 
 header .header-user__container {
@@ -57,6 +56,24 @@ header .header-user__container {
     gap: 28px;
 }
 
+header .header-user__container a {
+    position: relative;
+}
+
+header .header-user__container a .count {
+    display: inline-flex;
+    position: absolute;
+    top: -6px;
+    right: -18px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #000000;
+    color: #ffffff;
+    font-size: 10px;
+    justify-content: center;
+    align-items: center;
+}
 main {
     position: relative;
     padding-top: 74px;
