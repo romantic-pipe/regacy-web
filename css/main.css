@@ -173,6 +173,26 @@
     height: 1px;
     background: #ffffff;
 }
+.landing-brand__container .landing-brand__floating__container {
+    position: absolute;
+    bottom: 109px;
+    right: 30px;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.landing-brand__container .landing-brand__floating__container button {
+    width: 32px;
+}
+
+.landing-brand__container .landing-brand__floating__container button img {
+    width: 100%;
+}
+
+.landing-brand__container .landing-brand__floating__container .top-button {
+    rotate: 180deg;
+}
 .landing__indicator {
     position: fixed;
     bottom: 50%;

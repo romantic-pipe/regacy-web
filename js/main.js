@@ -33,6 +33,7 @@ const Main = {
         this.toggleSlideVideo()
         this.controlIndicatorEffect()
         this.controlIndicatorPosition()
+        this.controlBrandingFloatingButton()
     },
     initSlide: function() {
         const slideElementArr = document.querySelectorAll('.landing__item')
@@ -171,5 +172,22 @@ const Main = {
             mediaControllerEl.style.position = endOfLandingContainer ? 'absolute' : 'fixed'
             brandContainerEl.style.opacity = endOfLandingContainer ? 1 : 0
         }, 100), { passive: true })
+    },
+    controlBrandingFloatingButton: function() {
+        const brandingContainerEl = document.querySelector('.landing-brand__container')
+        const scrollToTopButton = brandingContainerEl.querySelector('.top-button')
+        const kakaoTalkButton = brandingContainerEl.querySelector('.kakaotalk-button')
+
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth',
+            })   
+        })
+
+        kakaoTalkButton.addEventListener('click', () => {
+            console.log('kakao')
+        })
     }
 }
