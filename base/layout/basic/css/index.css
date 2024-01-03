@@ -72,26 +72,29 @@ footer {
 }
 
 .footer-menu__container {
+    display: flex;
+        justify-content: space-between;
+        align-items: top;
     margin-bottom: 80px;
 }
 
-.footer-menu__container ul {
+.footer-menu__container .menu {
     display: inline-flex;
     gap: 53px;
     font-size: 16px;
     font-weight: 600;
 }
 
-.footer-menu__container ul li a {
+.footer-menu__container .menu li a {
     font-family: Montserrat;
     font-weight: 600;
 }
-.footer-menu__container ul li.active {
+.footer-menu__container .menu li.active {
     position: relative;
     color: #ffffff;
 }
 
-.footer-menu__container ul li.active::after {
+.footer-menu__container .menu li.active::after {
     content: '';
     position: absolute;
     bottom: -6px;
@@ -101,6 +104,21 @@ footer {
     background-color: #ffffff;
 }
 
+.footer-menu__container .channel {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-menu__container .channel img {
+    filter: invert(48%) sepia(19%) saturate(10%) hue-rotate(72deg) brightness(99%) contrast(90%);
+}
+
+.footer-menu__container .channel li:hover img {
+    filter: invert(0%);
+}
 .footer-info__container {
     display: flex;
     justify-content: space-between;
